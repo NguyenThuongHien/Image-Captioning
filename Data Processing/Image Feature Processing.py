@@ -72,7 +72,7 @@ class FeatureExtractor(object):
 		encoding_file={}
 		features=self.get_feature_from_list(cluster_i)
 		all_files=listdir(self.img_path)
-		for name_img in cluster_i:
+		for i,name_img in enumerate(cluster_i):
 			encoding_file[name_img]=features[i]
 			pass
 		pickle.dump(encoding_file,open(save_path,'wb'))
@@ -81,4 +81,4 @@ if __name__ == '__main__':
 	featurer=FeatureExtractor(img_path='../Data Set/Flickr8k_image/Flicker8k_Dataset',name_model='InceptionV3')
 	featurer.initiate_model()
 	cluster=featurer.divide_dataset()
-	featurer.save_feature('../Data Set/Image Feature/Train.pickle',cluster[0])
+	featurer.save_feature('../Data Set/Image Feature/Train.pickle',cluster[2])
